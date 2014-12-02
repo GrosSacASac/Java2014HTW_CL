@@ -8,13 +8,21 @@ public class Collection
     int N;
     final static int DEFAULT_MAX_SIZE = 1000;
     
-    public collection (int maxSize)
+     /**
+    * Constructor collection (with all parameters)
+    * 
+    * @param  maxSize (int)
+    */
+    public Collection (int maxSize)
     {
         this.N = 0;
         this.table = new Article[maxSize];
     }
     
-    public collection ()
+     /**
+    * Constructor collection (with no specific parameters)
+    */
+    public Collection ()
     {
         this(DEFAULT_MAX_SIZE);
     }
