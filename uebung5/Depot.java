@@ -4,9 +4,9 @@
  */
 public class Depot
 {
-    Article[] table;
-    int N;
-    final static int DEFAULT_MAX_SIZE = 1000;
+    private Article[] table;
+    private int size;//how many articles in table 
+    private,final static int DEFAULT_MAX_SIZE = 1000;
     
      /**
     * Constructor Depot (with all parameters)
@@ -15,7 +15,7 @@ public class Depot
     */
     public Depot (int maxSize)
     {
-        this.N = 0;
+        this.size = 0;
         this.table = new Article[maxSize];
     }
     
@@ -28,14 +28,14 @@ public class Depot
     }
     
      /**
-    * Method newArticle
+    * Method addArticle
     * 
-    * creates a new article
+    * adds a new article
     */
-    public void newArticle (Article article)
+    public void addArticle (Article article)
     {
-        this.table[this.N] = article;
-        this.N++;
+        this.table[this.size] = article;
+        this.size++;
     }
     
      /**
@@ -45,27 +45,30 @@ public class Depot
     *
     * @param articleNumber (int)
     */
-    public void deleteArticle (int articleNumber)
+    public void removeArticle (int articleNumber)
     {
-        int i = this.getArticleFromNumber(articleNumber);
-        for (int j=i ; j<this.N ; j++)
-        {
-            this.table[j] = this.table [j+1];
+        int i = this.articleFromNumber(articleNumber);
+        if (i == -1) {
+        	return;
         }
-        this.N--;
+        for (int j = i ; j < this.size ; j++)
+        {
+            this.table[j] = this.table[j + 1];
+        }
+        this.size--;
     }
     
      /**
-    * Method getArticleFromNumber
+    * Method articleFromNumber
     * 
 	* finds the rank of the article in the table with its number
 	* 
 	* @param  articleNumber (int)
     * @return i (int) the rank of the article with the asked number
 	*/
-    public getArticleFromNumber (int articleNumber)
+    public articleFromNumber (int articleNumber)
     {
-        for (int i=0; i<this.N ; i++)
+        for (int i=0; i<this.size ; i++)
         {
             if (articleNumber == this.table[i].getNumber())
             {
