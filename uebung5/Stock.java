@@ -2,10 +2,22 @@
  * @author LUCIE BECHTOLD / CYRIL WALLE 
  * @version 2.0
  */
-public class Stock
+public class Collection
 {
-    int[] table;
+    Article[] table;
     int N;
+    final static int DEFAULT_MAX_SIZE = 1000;
+    
+    public collection (int maxSize)
+    {
+        this.N = 0;
+        this.table = new Article[maxSize];
+    }
+    
+    public collection ()
+    {
+        this(DEFAULT_MAX_SIZE);
+    }
     
      /**
     * Method newArticle
@@ -21,9 +33,9 @@ public class Stock
      /**
     * Method deleteArticle
     *
-    * deletes an article
+    * deletes an article when entering its number
     *
-    * @param i (int)
+    * @param articleNumber (int)
     */
     public void deleteArticle (int articleNumber)
     {
@@ -33,59 +45,6 @@ public class Stock
             this.table[j] = this.table [j+1];
         }
         this.N--;
-    }
-    
-	 /**
-    * Method reduceStock
-    * 
-	* reduces the stock of a certain amount
-	* 
-	* @param  amount (int)
-	*/
-	public void reduceStock (int amount)
-	{
-        check (amount>0 , "Needs to be positive");
-		this.stock = this.stock + amount;
-	}
-    
-	 /**
-    * Method augmentStock
-    * 
-	* augments the stock of a certain amount
-	* 
-	* @param  amount (int)
-	*/
-	public void augmentStock (int amount) 
-	{
-        check (amount>0 , "Needs to be positive");
-        check (amount<=stock , "Impossible to deduce more than available");
-		this.stock = this.stock - amount;
-	}
-    
-     /**
-    * Method augmentPrice
-    * 
-	* augments the price of a certain percentage
-	* 
-	* @param  percentage (byte)
-	*/
-    public void augmentPrice (byte percentage)
-    {
-        percentage /= 100;
-        price += price*percentage;
-    }
-    
-     /**
-    * Method reducePrice
-    * 
-	* reduces the price of a certain percentage
-	* 
-	* @param  percentage (byte)
-	*/
-    public void reducePrice (byte percentage)
-    {
-        percentage /= 100;
-        price -= price*percentage;
     }
     
      /**
@@ -98,9 +57,9 @@ public class Stock
 	*/
     public getArticleFromNumber (int articleNumber)
     {
-        for (int i=0; i<N ; i++)
+        for (int i=0; i<this.N ; i++)
         {
-            if (articleNumber == table[i].getNumber())
+            if (articleNumber == this.table[i].getNumber())
             {
                 return i;
             }

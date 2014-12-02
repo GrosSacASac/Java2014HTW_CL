@@ -5,55 +5,89 @@
 public class Article
 {
    
-    private String number;
+    private int number;
     private String description;
     private int stock;
     private double price;
     final static int STOCK_NOT_SPECIFIED = 0;
 
-    //constructor
-    public Article(String number, String description, int stock)
+     /**
+    * Constructor Article (with all parameters)
+    * 
+    * @param  number (int), price (double), stock (int), description (String)
+    */
+    public Article(int number, double price, int stock, String description)
     {
         check(number < 10000 && number > 999, "The article number must be 4-digits long.");
         check(stock >= 0 : "Needs to be positive");
-        check(price > 0 , "The price must be superior as 0");
         
         this.number = number; //number
-        this.setDescription(description); //description
+        this.setPrice(price); //price
         this.stock = stock; //stock
-        this.price = price; //price
+        this.setDescription(description); //description
     }
     
-    public Article(String number, String description)
-    {
-        this(number, description, STOCK_NOT_SPECIFIED);
-    }
-
      /**
+    * Constructor Article (with 3 parameters)
+    * 
+    * @param  number (int), price (double), description (String)
+    */
+    public Article(int number, double price, String description)
+    {
+        this(number, price, STOCK_NOT_SPECIFIED, description);
+    }
+    
+	 /**
     * Method reduceStock
     * 
-    * reduces the stock of a certain amount
-    * 
-    * @param  amount (int)
-    */
-    public void reduceStock(int amount)
-    {
-        check(amount > 0 , "Needs to be positive");
-        this.stock = this.stock + amount;
-    }
+	* reduces the stock of a certain amount
+	* 
+	* @param  amount (int)
+	*/
+	public void reduceStock (int amount)
+	{
+        check (amount>0 , "Needs to be positive");
+		this.stock = this.stock + amount;
+	}
     
 	 /**
     * Method augmentStock
     * 
-    * augments the stock of a certain amount
+	* augments the stock of a certain amount
+	* 
+	* @param  amount (int)
+	*/
+	public void augmentStock (int amount) 
+	{
+        check (amount>0 , "Needs to be positive");
+        check (amount<=stock , "Impossible to deduce more than available");
+		this.stock = this.stock - amount;
+	}
+    
+     /**
+    * Method augmentPrice
     * 
-    * @param  amount (int)
-    */
-    public void augmentStock(int amount) 
+	* augments the price of a certain percentage
+	* 
+	* @param  percentage (byte)
+	*/
+    public void augmentPrice (byte percentage)
     {
-        check(amount > 0 , "Needs to be positive");
-        check(amount <= this.stock , "Impossible to deduce more than available");
-        this.stock = this.stock - amount;
+        percentage /= 100;
+        price += price*percentage;
+    }
+    
+     /**
+    * Method reducePrice
+    * 
+	* reduces the price of a certain percentage
+	* 
+	* @param  percentage (byte)
+	*/
+    public void reducePrice (byte percentage)
+    {
+        percentage /= 100;
+        price -= price*percentage;
     }
     
      /**
@@ -80,9 +114,28 @@ public class Article
     }
     
      /**
+    * Method setPrice
+    * 
+    * @param price (double)
+    */
+    public void setPrice(double price) 
+    {
+        check(price > 0 , "The price must be superior as 0");
+        this.price = price;
+    }
+    
+     /**
+    * Method getPrice
+    */
+    public double getPrice() 
+    {
+        return this.price;
+    }
+    
+     /**
     * Method getNumber
     */
-    public String getNumber() 
+    public int getNumber() 
     {
         return this.number;
     }
