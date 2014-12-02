@@ -38,6 +38,14 @@ public class Depot
         this.N++;
     }
     
+    public void augmentPriceArticleAll (byte percentage)
+    {
+        for (int i = 0; i<N ; i++)
+        {
+            table[i].augmentPrice(percentage);
+        }
+    }
+    
      /**
     * Method deleteArticle
     *

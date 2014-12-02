@@ -47,7 +47,7 @@ public class Article
 	public void reduceStock (int amount)
 	{
         check (amount>0 , "Needs to be positive");
-		this.stock = this.stock + amount;
+		this.stock -= amount;
 	}
     
 	 /**
@@ -61,7 +61,7 @@ public class Article
 	{
         check (amount>0 , "Needs to be positive");
         check (amount<=stock , "Impossible to deduce more than available");
-		this.stock = this.stock - amount;
+		this.stock += amount;
 	}
     
      /**
@@ -73,8 +73,8 @@ public class Article
 	*/
     public void augmentPrice (byte percentage)
     {
-        percentage /= 100;
-        price += price*percentage;
+        double division = (double)percentage / 100;
+        this.price += this.price*division;
     }
     
      /**
@@ -86,8 +86,8 @@ public class Article
 	*/
     public void reducePrice (byte percentage)
     {
-        percentage /= 100;
-        price -= price*percentage;
+        double division = (double)percentage / 100;
+        this.price -= this.price*divison;
     }
     
      /**
