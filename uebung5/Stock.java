@@ -2,27 +2,27 @@
  * @author LUCIE BECHTOLD / CYRIL WALLE 
  * @version 2.0
  */
-public class Collection
+public class Depot
 {
     Article[] table;
     int N;
     final static int DEFAULT_MAX_SIZE = 1000;
     
      /**
-    * Constructor collection (with all parameters)
+    * Constructor Depot (with all parameters)
     * 
     * @param  maxSize (int)
     */
-    public Collection (int maxSize)
+    public Depot (int maxSize)
     {
         this.N = 0;
         this.table = new Article[maxSize];
     }
     
      /**
-    * Constructor collection (with no specific parameters)
+    * Constructor Depot (with no specific parameters)
     */
-    public Collection ()
+    public Depot ()
     {
         this(DEFAULT_MAX_SIZE);
     }
