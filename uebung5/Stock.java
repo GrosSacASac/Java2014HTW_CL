@@ -12,9 +12,9 @@ public class Stock
     * 
     * creates a new article
     */
-    public void newArticle ()
+    public void newArticle (Article article)
     {
-        this.table[this.N] = new Article();
+        this.table[this.N] = article;
         this.N++;
     }
     
@@ -27,7 +27,7 @@ public class Stock
     */
     public void deleteArticle (int articleNumber)
     {
-        int i = this.getArticleByNumber(articleNumber);
+        int i = this.getArticleFromNumber(articleNumber);
         for (int j=i ; j<this.N ; j++)
         {
             this.table[j] = this.table [j+1];
@@ -35,7 +35,7 @@ public class Stock
         this.N--;
     }
     
-	/**
+	 /**
     * Method reduceStock
     * 
 	* reduces the stock of a certain amount
@@ -48,7 +48,7 @@ public class Stock
 		this.stock = this.stock + amount;
 	}
     
-	/**
+	 /**
     * Method augmentStock
     * 
 	* augments the stock of a certain amount
@@ -89,14 +89,14 @@ public class Stock
     }
     
      /**
-    * Method getArticleByNumber
+    * Method getArticleFromNumber
     * 
 	* finds the rank of the article in the table with its number
 	* 
 	* @param  articleNumber (int)
     * @return i (int) the rank of the article with the asked number
 	*/
-    public getArticleByNumber (int articleNumber)
+    public getArticleFromNumber (int articleNumber)
     {
         for (int i=0; i<N ; i++)
         {
