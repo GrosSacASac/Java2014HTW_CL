@@ -9,7 +9,7 @@ public class Article
     private String description;
     private int stock;
     private double price;
-    final static int STOCK_NOT_SPECIFIED = 0;
+    private final static int STOCK_NOT_SPECIFIED = 0;
 
      /**
     * Constructor Article (with all parameters)
@@ -47,6 +47,7 @@ public class Article
 	public void reduceStock (int amount)
 	{
         check (amount>0 , "Needs to be positive");
+        check (amount <= stock , "Impossible to deduce more than available");
 		this.stock -= amount;
 	}
     
