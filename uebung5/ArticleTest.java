@@ -12,86 +12,143 @@ import org.junit.runners.JUnit4;
  *
  */
 public class ArticleTest {
-
+    
+    Article article1;
+    
+    @before
     public Article createArticleNormal() {
     	int number = 1229;
     	double price = 100.0;
     	int stock = 5;
-    	String description ="a";
-    	return new Article(number,price,stock,description);
+    	String description = "a";
+    	this.article1 = new Article(number,price,stock,description);
     }
     
-    @Test
-    public void constructor() {
-    	int number = 1229;
-    	double price = 100.0;
-    	int stock = 5;
-    	String description ="a";
-    	try {
-    		new Article(number,price,stock,description);
-    	} except (Error e) {
-    		fail("construcor with 4");
-    	}
-    }
     
     @Test
     public void constructor2() {
     	int number = 1229;
     	double price = 100.0;
-    	String description ="a";
+    	String description = "a";
     	try {
     		new Article(number,price,description);
     	} except (Error e) {
     		fail("construcor with 3!");
     	}
     }
-
+    
+    @Test (expected = NumberTooBigException.class)
+    public void constructorNumberTooBigException() {
+    	int number = 1225559;
+    	double price = 100.0;
+    	String description = "a";
+    	new Article(number,price,description);
+    }
+    
+    @Test (expected = NumberTooSmallException.class)
+    public void constructorNumberTooSmallException() {
+    	int number = 129;
+    	double price = 100.0;
+    	String description = "a";
+    	new Article(number,price,description);
+    }
+    
+    @Test (expected = NegativePriceException.class)
+    public void constructorNegativePriceException() {
+    	int number = 1209;
+    	double price = -100.0;
+    	String description = "a";
+    	new Article(number,price,description);
+    }
+    
+    @Test (expected = VoidDescriptionException.class)
+    public void constructorVoidDescriptionException() {
+    	int number = 129;
+    	double price = 100.0;
+    	String description = "";
+    	new Article(number,price,description);
+    }
+    
+    @Test (expected = NegativeStockException.class)
+    public Article constructorNegativeStockException() {
+    	int number = 1229;
+    	double price = 100.0;
+    	int stock = -5;
+    	String description = "a";
+    	new Article(number,price,stock,description);
+    }
+    
     @Test
     public void augmentPrice() {
-    	Article article1 = createArticleNormal();
     	byte x = 50;
-    	article1.augmentPrice(x)
-    	assertEquals(article1.getPrice(), 150, "incorrect percentage calculation");
+    	this.article1.applyPercentagePrice(x);
+    	assertEquals(this.article1.getPrice(), 150, 0.001, "incorrect percentage calculation");
     }
 
     @Test
     public void reducePrice() {
-    	Article article1 = createArticleNormal();
-    	byte x = 50;
-    	article1.reducePrice(x)
-    	assertEquals(article1.getPrice(), 50, "incorrect percentage calculation");
+    	byte x = -50;
+    	this.article1.applyPercentagePrice(x);
+    	assertEquals(this.article1.getPrice(), 50, 0.001, "incorrect percentage calculation");
     }
     
     @Test
     public void setPrice() {
-    	Article article1 = createArticleNormal();
     	int x = 99;
-    	article1.setPrice(x)
-    	assertEquals(article1.getPrice(), 99, "incorrect");
+    	this.article.setPrice(x);
+    	assertEquals(this.article1.getPrice(), 99, 0.001, "incorrect");
+    }
+    
+    @Test (expected = NegativePriceException.class)
+    public void setPrice() {
+    	int x = -99;
+    	this.article.setPrice(x);
+    }
+    
+    @Test 
+    @Ignore
+    public void testToString() {
+    //not finished
+        assertEquals(""+this.article,"Article: 1229 Price: 100 description:  stock: ","toString make it display correctly");
     }
 
     @Test
     public void augmentStock() {
-    	Article article1 = createArticleNormal();
     	int x = 50;
-    	article1.augmentStock(x)
-    	assertEquals(article1.getStock(), 55, "incorrect");
+    	this.article1.augmentStock(x);
+    	assertEquals(this.article1.getStock(), 55, "incorrect");
+    }
+
+    @Test (expected = IllegalArgumentException.class)
+    public void augmentStock() {
+    	int x = -50;
+    	this.article1.augmentStock(x);
     }
 
     @Test
     public void reduceStock() {
-    	Article article1 = createArticleNormal();
     	int x = 3;
-    	article1.reduceStock(x)
-    	assertEquals(article1.getStock(), 2, "incorrect ");
+    	this.article1.reduceStock(x);
+    	assertEquals(this.article1.getStock(), 2, "incorrect ");
+    }
+    
+    @Test (expected = NegativeStockException.class)
+    public void reduceStock() {
+    	int x = 1000;
+    	this.article1.reduceStock(x);
+    }
+    
+    @Test (expected = IllegalArgumentException.class)
+    public void reduceStock() {
+    	int x = -3;
+    	this.article1.reduceStock(x);
     }
     
     @Test
     public void setDescription() {
-    	Article article1 = createArticleNormal();
     	String x = "New des";
-    	article1.setDescription(x)
-    	assertEquals(article1.getDescription(), x, "incorrect setDescription");
+    	this.article1.setDescription(x);
+    	assertEquals(this.article1.getDescription(), x, "incorrect setDescription");
     }
 
     @Test
