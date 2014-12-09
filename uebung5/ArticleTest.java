@@ -26,13 +26,13 @@ public class ArticleTest {
     
     
     @Test
-    public void constructor2() {
+    static public void constructor2() {
     	int number = 1229;
     	double price = 100.0;
     	String description = "a";
     	try {
     		new Article(number,price,description);
-    	} except (Error e) {
+    	} catch (Error e) {
     		fail("construcor with 3!");
     	}
     }
@@ -154,5 +154,9 @@ public class ArticleTest {
     @Test
     @Ignore
     public void thisIsIgnored() {
+    }
+    
+    public static void main(String[] args) {
+    	constructor2();
     }
 }
