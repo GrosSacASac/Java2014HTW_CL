@@ -1,0 +1,118 @@
+/**Interface of the article
+ * @author LUCIE BECHTOLD / CYRIL WALLE 
+ * @version 2.0
+ */
+
+ 
+ import de.htw.saarland.stl.Stdin;
+
+public class ArticleDialog
+{
+    Article article;
+    
+    public void start ()
+    {
+        String number;
+        String description;
+        int stock;
+        byte error;
+        final byte REDUCE_STOCK = 1;
+        final byte AUGMENT_STOCK = 2;
+        final byte SET_DESCRIPTION = 3;
+        final byte CHANGE_PRIZE_POSITIVE = 4; 
+        final byte CHANGE_PRIZE_NEGATIVE = 5; 
+        final byte EXIT = 0;
+        byte answer;
+        
+        this.createNewArticle();
+        
+        do //while not exiting, repeat asking what to do
+        {
+            System.out.println("Your Article : " + this.article + "\n----------\nChoose :\n\t[ " + REDUCE_STOCK + " ]\tReduce the stock\n\t[ "  + AUGMENT_STOCK + " ]\tAugment the stock\n\t[ " + SET_DESCRIPTION + " ]\tSet the description\n\t[ " + EXIT + " ]\tExit\n");
+            answer = Stdin.readlnByte();
+            
+            try
+            {
+                switch (answer)
+                {
+                    case REDUCE_STOCK:
+                        this.reduceStock();
+                        break;
+                    
+                    case AUGMENT_STOCK:
+                        this.augmentStock();
+                        break;
+                    
+                    case SET_DESCRIPTION:
+                        this.setDescription();
+                        break;
+                    case CHANGE_PRIZE_POSITIVE:
+                        break;
+                    case CHANGE_PRIZE_NEGATIVE:
+                        break;
+                }
+            } catch (AssertionError e)
+            {
+                System.out.println(e);
+            }
+        } while (answer != EXIT);
+    }
+    
+     /**
+    * Constructor Article (with 3 parameters)
+    * 
+    * @param  number (int), price (double), description (String)
+    */
+    public void createNewArticle ()
+    {
+        do
+        {
+            try 
+            {
+                int answer = System.readlnByte("Creation of a new article...\nDo you want to enter a specific stock ? (Y/N)\n\t");
+                number = Stdin.readlnString("Enter the number of the article :\nThe number needs to be 4-digits long and positive.\n\t");
+                description = Stdin.readlnString("Enter the description of the article :\nThe description can't be empty.\n\t");
+                price = Stdin.readlnString("Enter the description of the article :\nThe description can't be empty.\n\t");
+                
+                if (answer = "Y")
+                    {
+                        stock = Stdin.readlnInt("Enter the stock of the article :\nThe stock can't be negative.\n\t");
+                        this.article = new Article(number,price,stock,description);
+                    }
+                else
+                    {
+                        this.article = new Article(number,price,description);
+                    }
+                System.out.println("Article created.");
+            }catch (RuntimeError e)
+            {
+                error = 1;
+            }
+        } while (error == 1);
+    }
+
+    public void reduceStock () //change the stock : reducing
+    {
+        int amount = Stdin.readlnInt("How much do you want to retrieve ?\n\t");
+        this.article.reduceStock(amount);
+    }
+    
+    public void augmentStock () //change the stock : adding
+    {
+        int amount = Stdin.readlnInt("How much do you want to add ?\n\t");
+        this.article.augmentStock(amount);
+    }
+    
+    public void setDescription () //change the description of the article
+    {
+        String newDescription = Stdin.readlnString("Enter the new description : \n\t");
+        this.article.setDescription(newDescription);
+    }
+    
+    
+    
+    public static void main(String[] args)
+    {
+        new InterfaceArticle().start();
+    }
+}
