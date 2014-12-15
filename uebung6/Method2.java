@@ -8,13 +8,25 @@ public class Method2
     String[SIZE_TABLE_MAX] string;
     int sizeTable = 0;
     
-    public Method2 (String text)
+     /**
+    * Constructor Article (with all parameters)
+    *
+    * Creates a new table containing all the strings to use.
+    * 
+    * @param  text (String), sizeTable (int)
+    */
+    public Method2 (String text, int sizeTable)
     {
         this.string[sizeTable] = text;
         sizeTable++;
     }
     
-    public String countUpperAndLowerCase ()
+     /**
+    * Method countUpperAndLowerCase
+    * 
+    * @param  string (String[]), sizeTable (int)
+    */
+    public String countUpperAndLowerCase (string[] string, int sizeTable)
     {
         int upperCase = 0;
         int lowerCase = 0;
@@ -33,6 +45,12 @@ public class Method2
                 "\nLowercase strings : " + lowerCase;
     }
     
+     /**
+    * Method isUpperCase
+    * 
+    * @param  string (String), sizeTable (int)
+    * @return isUpperCase (boolean)
+    */
     public boolean isUpperCase (String string, int sizeTable)
     {
         for (int i = 0; i <= string.length(); i++)
@@ -45,6 +63,12 @@ public class Method2
         return true;
     }
     
+     /**
+    * Method isLowerCase
+    * 
+    * @param  string (String), sizeTable (int)
+    * @return isLowerCase (boolean)
+    */
     public void isLowerCase (String string, int sizeTable)
     {
         for (int i = 0; i <= string.length(); i++)
