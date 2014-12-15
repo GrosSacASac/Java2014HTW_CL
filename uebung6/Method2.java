@@ -6,7 +6,7 @@ public class Method2
 {
     final static SIZE_TABLE_MAX = 100;
     String[SIZE_TABLE_MAX] string;
-    int sizeTable = 0;
+    //int sizeTable = 0;
     
      /**
     * Constructor Article (with all parameters)
@@ -18,7 +18,7 @@ public class Method2
     public Method2 (String text, int sizeTable)
     {
         this.string[sizeTable] = text;
-        sizeTable++;
+        //sizeTable++;
     }
     
      /**
@@ -29,7 +29,7 @@ public class Method2
     public String countLetters (string[] string, int sizeTable)
     {
         int letters = 0;
-        for (int i = 0; i <= sizeTable; i++)
+        for (int i = 0; i < sizeTable; i++)
         {
             if (isUpperCase(string,sizeTable) == true)
             {
