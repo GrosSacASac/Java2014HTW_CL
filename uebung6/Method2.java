@@ -26,54 +26,30 @@ public class Method2
     * 
     * @param  string (String[]), sizeTable (int)
     */
-    public String countUpperAndLowerCase (string[] string, int sizeTable)
+    public String countLetters (string[] string, int sizeTable)
     {
-        int upperCase = 0;
-        int lowerCase = 0;
+        int letters = 0;
         for (int i = 0; i <= sizeTable; i++)
         {
             if (isUpperCase(string,sizeTable) == true)
             {
-                upperCase++;
-            }
-            else if (isLowerCase(string, sizeTable) == true)
-            {
-                lowerCase++;
+                letters++;
             }
         }
-        return  "Uppercase strings : " + upperCase + 
-                "\nLowercase strings : " + lowerCase;
+        return  "Strings constituated only of letters : " + letters;
     }
     
      /**
-    * Method isUpperCase
+    * Method isLetter
     * 
     * @param  string (String), sizeTable (int)
-    * @return isUpperCase (boolean)
+    * @return isLetter (boolean)
     */
-    public boolean isUpperCase (String string, int sizeTable)
+    public boolean isLetter (String string, int sizeTable)
     {
         for (int i = 0; i <= string.length(); i++)
         {
-            if (isUpperCase(string.charAt(i)) == false)
-            {
-                return false;
-            }
-        }
-        return true;
-    }
-    
-     /**
-    * Method isLowerCase
-    * 
-    * @param  string (String), sizeTable (int)
-    * @return isLowerCase (boolean)
-    */
-    public void isLowerCase (String string, int sizeTable)
-    {
-        for (int i = 0; i <= string.length(); i++)
-        {
-            if (isLowerCase(string.charAt(i)) == false)
+            if (isLetter(string.charAt(i)) == false)
             {
                 return false;
             }
