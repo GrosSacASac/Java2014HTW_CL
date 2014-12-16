@@ -1,4 +1,4 @@
-/**Interface of the article
+/**Dialog Depot
  * @author LUCIE BECHTOLD / CYRIL WALLE 
  * @version 2.0
  */
