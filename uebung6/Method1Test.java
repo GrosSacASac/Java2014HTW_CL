@@ -28,7 +28,16 @@ public class Method1Test
                           6.0,
                           8.0};
         double wanted = 4.0;
-        assertEquals(Method1.calculateArithmeticAverage(table), wanted ,"");
+        assertArrayEquals(Method1.calculateArithmeticAverage(table), wanted ,"");
+    }
+
+    @Test
+    public void calculateArithmeticAverageTest2()
+    {
+        double[] table = {1.0,
+                          -1.0};
+        double wanted = 0.0;
+        assertArrayEquals(Method1.calculateArithmeticAverage(table), wanted ,"");
     }
 
     @Test
@@ -40,7 +49,7 @@ public class Method1Test
                           6.0,
                           8.0};
         double wanted = 8.0;
-        assertEquals(Method1.furthestNumberFrom(table), wanted ,"");
+        assertArrayEquals(Method1.furthestNumberFrom(table), wanted ,"");
     }
 
     @Test
@@ -52,7 +61,7 @@ public class Method1Test
                           6.0,
                           8.0};
         double wanted = 3.0;
-        assertEquals(Method1.closestNumberFrom(table), wanted ,"");
+        assertArrayEquals(Method1.closestNumberFrom(table), wanted ,"");
     }
     
     /**
