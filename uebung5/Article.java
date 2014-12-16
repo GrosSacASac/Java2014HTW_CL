@@ -19,7 +19,7 @@ public class Article
     public Article(int number, double price, int stock, String description)
     {
         check(number < 10000 && number > 999, "The article number must be 4-digits long.");
-        check(stock >= 0 : "Needs to be positive");
+        check(stock >= 0 , "Needs to be positive");
         
         this.number = number; //number
         this.setPrice(price); //price
