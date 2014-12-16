@@ -12,6 +12,7 @@ import org.junit.Test;
  */
 public class Method1Test
 {
+    double final static PRECISION = 0.0001;
     /**
      * Construtor default para a classe de teste Method1Test
      */
@@ -28,7 +29,7 @@ public class Method1Test
                           6.0,
                           8.0};
         double wanted = 4.0;
-        assertEquals(Method1.calculateArithmeticAverage(table), wanted ,"");
+        assertEquals(Method1.calculateArithmeticAverage(table), wanted, PRECISION, "");
     }
 
     @Test
@@ -37,7 +38,7 @@ public class Method1Test
         double[] table = {1.0,
                           -1.0};
         double wanted = 0.0;
-        assertEquals(Method1.calculateArithmeticAverage(table), wanted ,"");
+        assertEquals(Method1.calculateArithmeticAverage(table), wanted, PRECISION ,"");
     }
 
     @Test
@@ -49,7 +50,7 @@ public class Method1Test
                           6.0,
                           8.0};
         double wanted = 8.0;
-        assertEquals(Method1.furthestNumberFrom(table), wanted ,"");
+        assertEquals(Method1.furthestNumberFrom(table), wanted, PRECISION ,"");
     }
 
     @Test
@@ -61,7 +62,7 @@ public class Method1Test
                           6.0,
                           8.0};
         double wanted = 3.0;
-        assertEquals(Method1.closestNumberFrom(table), wanted ,"");
+        assertEquals(Method1.closestNumberFrom(table), wanted, PRECISION ,"");
     }
     
     /**
