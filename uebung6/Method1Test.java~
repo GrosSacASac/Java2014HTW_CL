@@ -50,7 +50,7 @@ public class Method1Test
                           6.0,
                           8.0};
         double wanted = 8.0;
-        assertEquals(Method1.furthestNumberFrom(table), wanted, PRECISION);
+        assertEquals(Method1.furthestNumberFrom(table), wanted, PRECISION ,"");
     }
 
     @Test
@@ -62,7 +62,7 @@ public class Method1Test
                           6.0,
                           8.0};
         double wanted = 3.0;
-        assertEquals(Method1.closestNumberFrom(table), wanted, PRECISION);
+        assertEquals(Method1.closestNumberFrom(table), wanted, PRECISION ,"");
     }
     
     /**

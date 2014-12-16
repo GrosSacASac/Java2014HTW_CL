@@ -15,8 +15,7 @@ public class MethodDialog
     public void start ()
     {
         byte answer = 0;
-        System.out.println("------------------------\nWelcome\n------------------------");
-        System.out.println("Please choose one of the following function to use :\n");
+        System.out.println("------------------------\nWelcome");
         
         do
         {
@@ -71,7 +70,7 @@ public class MethodDialog
         try {
             int sizeTable = askInt("Enter the size of the table you want to create :\t");
             String[] table = createNewTableString(sizeTable);
-            System.out.println(Method2.countStringsWithUniCaseLetters(table));
+            System.out.println("Strings consisting only of letters : " + Method2.countStringsWithUniCaseLetters(table));
         } catch (Error e) {
             System.out.println("Error: " + e);
         }
@@ -86,7 +85,8 @@ public class MethodDialog
         try {
             int sizeTable = askInt("Enter the size of the table you want to create :\t");
             int[] table = createNewTableNumberInt(sizeTable);
-            System.out.println("The sorted table is\t" + Method3.insertionSort(table));
+            System.out.println("The sorted table is : ");
+            Method3.insertionSort(table);
             for (int i = 0; i < sizeTable; i++)
             {
                 System.out.println(table[i]);

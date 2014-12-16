@@ -5,15 +5,12 @@
  
 public class Method2
 {
-    final static int SIZE_TABLE_MAX = 100;
-    String[] string;
-    
      /**
     * Method countUpperAndLowerCase
     * 
     * @param  string (String[]), sizeTable (int)
     */
-    public static String countStringsWithUniCaseLetters (String[] strings)
+    public static int countStringsWithUniCaseLetters (String[] strings)
     {
         int letters = 0;
         int sizeTable = strings.length;
@@ -24,7 +21,7 @@ public class Method2
                 letters++;
             }
         }
-        return  "Strings constituated only of letters : " + letters;
+        return letters;
     }
     
      /**

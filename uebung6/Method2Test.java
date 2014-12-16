@@ -23,11 +23,11 @@ public class Method2Test
     @Test
     public void countStringsWithUniCaseLettersTest()
     {
-        double[] strings = {"abc de",
+        String[] strings = {"abc de",
                           "AAA",
                           "Aa"};
         int wanted = 2;
-        assertEquals(Method2.countStringsWithUniCaseLetters(strings), wanted ,"");
+        assertEquals(Method2.countStringsWithUniCaseLetters(strings), wanted);
     }
 
     /**

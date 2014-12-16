@@ -20,7 +20,7 @@ public class MethodDialog
         
         do
         {
-            System.out.println( "Please choose one of the following function to use :\n\t" + 
+            System.out.println( "------------------------\nPlease choose one of the following function to use :\n\t" + 
                                 "[" + ARITHMETIC_AVERAGE + "]\tCalculate the arithmetic average, find the closest and furthest number from it.\n\t" + 
                                 "[" + STRING_LETTER_COUNT + "]\tCalculate how many string are composed of only letters.\n\t" + 
                                 "[" + INSERTION_SORTING + "]\tSorts a table.\n\t" +
@@ -28,6 +28,7 @@ public class MethodDialog
             answer = askByte("");
             tryThis(answer);
         } while (answer != EXIT);
+        System.out.println("Program exited.");
     }
     
     public void tryThis(byte answer) {
@@ -55,7 +56,7 @@ public class MethodDialog
         try {
             int sizeTable = askInt("Enter the size of the table you want to create :\t");
             double[] table = createNewTableNumberDouble(sizeTable);
-            System.out.println(Method1.calculateArithmAverAndOthers(table,sizeTable));
+            System.out.println(Method1.calculateArithmAverAndOthers(table));
         } catch (Error e) {
             System.out.println("Error: " + e);
         }
@@ -70,7 +71,7 @@ public class MethodDialog
         try {
             int sizeTable = askInt("Enter the size of the table you want to create :\t");
             String[] table = createNewTableString(sizeTable);
-            System.out.println(Method2.countLetters(table,sizeTable));
+            System.out.println("Strings consisting only of letters : " + Method2.countStringsWithUniCaseLetters(table));
         } catch (Error e) {
             System.out.println("Error: " + e);
         }
@@ -85,7 +86,8 @@ public class MethodDialog
         try {
             int sizeTable = askInt("Enter the size of the table you want to create :\t");
             int[] table = createNewTableNumberInt(sizeTable);
-            System.out.println("The sorted table is\t" + Method3.insertionSort(table));
+            System.out.println("The sorted table is : ");
+            Method3.insertionSort(table);
             for (int i = 0; i < sizeTable; i++)
             {
                 System.out.println(table[i]);
@@ -95,10 +97,15 @@ public class MethodDialog
         }
     }
     
+    /**
+     * Method createNewTableNumberInt
+     * @param sizeTable (int)
+     * @return table (int[])
+     */
     public int[] createNewTableNumberInt (int sizeTable)
     {
         int number;
-        int[] table = null;
+        int[] table = new int[sizeTable];;
         for (int i = 0; i < sizeTable; i++)
         {
             table[i] = askInt("Enter a number (int) :\t");
@@ -106,10 +113,15 @@ public class MethodDialog
         return table;
     }    
     
+    /**
+     * Method createNewTableNumberDouble
+     * @param sizeTable (int)
+     * @return table (double[])
+     */
     public double[] createNewTableNumberDouble (int sizeTable)
     {
         double number;
-        double[] table = null;
+        double[] table = new double[sizeTable];
         for (int i = 0; i < sizeTable; i++)
         {
             table[i] = askDouble("Enter a number (double) :\t");
@@ -117,10 +129,15 @@ public class MethodDialog
         return table;
     }    
     
+    /**
+     * Method createNewTableString
+     * @param sizeTable (int)
+     * @return table (String[])
+     */
     public String[] createNewTableString (int sizeTable)
     {
         String text;
-        String[] table = null;
+        String[] table = new String[sizeTable];;
         for (int i = 0; i < sizeTable; i++)
         {
             table[i] = askString("Enter your text :\t");

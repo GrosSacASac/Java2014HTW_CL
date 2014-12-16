@@ -5,9 +5,6 @@
  
 public class Method1
 {
-    final static int SIZE_TABLE_MAX = 100;
-    double[] table;
-    double gap;
     
      /**
     * Method main
@@ -33,13 +30,12 @@ public class Method1
     public static double calculateArithmeticAverage (double[] table)
     {
         double sumTotalTable = 0.0;
-        double sizeTable = table.length;
+        int sizeTable = table.length;
         for (int i = 0; i < sizeTable; i++)
         {
             sumTotalTable += table[i];
         }
-        double arithmeticAverage = sumTotalTable / sizeTable;
-        return arithmeticAverage;
+        return sumTotalTable / (double)sizeTable;
     }
     
      /**
@@ -54,7 +50,7 @@ public class Method1
         double furthest = table[0];
         double index = 0.0;
         int sizeTable = table.length;
-        double average = calculateArithmeticAverage(sizeTable,table);
+        double average = calculateArithmeticAverage(table);
         for (int i = 0; i < sizeTable; i++)
         {
             index = maximum;
@@ -76,15 +72,15 @@ public class Method1
     public static double closestNumberFrom (double[] table)
     {
         double closest = table[0];
-        double index = 0.0;
-        double average = calculateArithmeticAverage(sizeTable,table);
+        double lastMinimum = 0.0;
+        double average = calculateArithmeticAverage(table);
         double minimum = calculateGap(average,closest);
         int sizeTable = table.length;
         for (int i = 0; i < sizeTable; i++)
         {
-            index = minimum;
+            lastMinimum = minimum;
             minimum = minimum(calculateGap(average,table[i]),calculateGap(average,closest));
-            if (minimum != index)
+            if (minimum != lastMinimum)
             {
                 closest = table[i];
             }

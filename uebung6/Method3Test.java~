@@ -25,7 +25,7 @@ public class Method3Test
     {
         int[] unsorted = {99,3,2,1,45};
         int[] wanted = {1,2,3,45,99};
-        assertArrayEquals(Method3.insertionSort(unsorted), wanted);
+        assertArrayEquals(Method3.insertionSort(unsorted), wanted ,"");
     }
     
     /**
