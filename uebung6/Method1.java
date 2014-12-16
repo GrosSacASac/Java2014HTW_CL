@@ -75,11 +75,11 @@ public class Method1
     */
     public static double closestNumberFrom (double[] table)
     {
-        double minimum = 0.0;
         double closest = table[0];
         double index = 0.0;
-        int sizeTable = table.length;
         double average = calculateArithmeticAverage(sizeTable,table);
+        double minimum = calculateGap(average,closest);
+        int sizeTable = table.length;
         for (int i = 0; i < sizeTable; i++)
         {
             index = minimum;
