@@ -34,7 +34,7 @@ public class Method2
     */
     public static boolean isCharLetter (String string, int sizeTable)
     {
-        for (int i = 0; i < string.length(); i++)
+        for (int i = 0; i <= string.length(); i++)
         {
             if (!Character.isLetter(string.charAt(i)))
             {

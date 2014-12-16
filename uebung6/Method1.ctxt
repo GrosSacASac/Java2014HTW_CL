@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.params=table\ sizeTable
+comment0.target=java.lang.String\ calculateArithmAverAndOthers(double[],\ int)
+comment0.text=\r\n\ Method\ main\r\n\r\n\ @param\ sizeTable\ (int),\ table\ (double[])\r\n\ @return\ results\ to\ the\ different\ methods\ (String)\r\n
+comment1.params=sizeTable\ table
+comment1.target=double\ calculateArithmeticAverage(int,\ double[])
+comment1.text=\r\n\ Method\ calculateArithmeticAverage\r\n\r\n\ @param\ sizeTable\ (int),\ table\ (double[])\r\n
+comment2.params=sizeTable\ table
+comment2.target=double\ furthestNumberFrom(int,\ double[])
+comment2.text=\r\n\ Method\ furthestNumberFrom\r\n\r\n\ @param\ table\ (double[])\r\n\ @return\ maximum\ (double)\r\n
+comment3.params=sizeTable\ table
+comment3.target=double\ closestNumberFrom(int,\ double[])
+comment3.text=\r\n\ Method\ closestNumberFrom\r\n\r\n\ @param\ table\ (double[])\r\n\ @return\ minimum\ (double)\r\n
+comment4.params=number\ minimum
+comment4.target=double\ minimum(double,\ double)
+comment4.text=\r\n\ Method\ minimum\r\n\r\n\ @param\ number\ (double),\ minimum\ (double)\r\n\ @return\ minimum\ (double)\r\n
+comment5.params=number\ maximum
+comment5.target=double\ maximum(double,\ double)
+comment5.text=\r\n\ Method\ maximum\r\n\r\n\ @param\ number\ (double),\ maximum\ (double)\r\n\ @return\ maximum\ (double)\r\n
+comment6.params=average\ number
+comment6.target=double\ calculateGap(double,\ double)
+comment6.text=\r\n\ Method\ calculateGap\r\n\r\n\ @param\ average\ (double),\ number\ (double)\r\n\ @return\ gap\ (double)\r\n
+numComments=7

@@ -51,18 +51,17 @@ public class Method1
     {
         double maximum = 0.0;
         double furthest = 0.0;
-        double index = 0.0;
         double average = calculateArithmeticAverage(sizeTable,table);
         for (int i = 0; i < sizeTable; i++)
         {
-            index = maximum;
-            maximum = maximum(calculateGap(average,table[i]),calculateGap(average,furthest));
-            if (maximum != index)
+            furthest = maximum;
+            maximum = maximum(calculateGap(average,table[i]),calculateGap(average,maximum));
+            if (maximum != furthest)
             {
                 furthest = table[i];
             }
         }
-        return furthest;
+        return maximum;
     }
     
      /**
@@ -75,18 +74,17 @@ public class Method1
     {
         double minimum = 0.0;
         double closest = 0.0;
-        double index = 0.0;
         double average = calculateArithmeticAverage(sizeTable,table);
         for (int i = 0; i < sizeTable; i++)
         {
-            index = minimum;
-            minimum = minimum(calculateGap(average,table[i]),calculateGap(average,closest));
-            if (minimum != index)
+            closest = minimum;
+            minimum = minimum(calculateGap(average,table[i]),calculateGap(average,minimum));
+            if (minimum != closest)
             {
                 closest = table[i];
             }
         }
-        return closest;
+        return minimum;
     }
     
      /**
@@ -112,7 +110,7 @@ public class Method1
     */
     public static double maximum (double number, double maximum)
     {
-        if (number >= maximum)
+        if (number => maximum)
         {
             maximum = number;
         }

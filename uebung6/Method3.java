@@ -1,16 +1,21 @@
+/**Third part of the exercise
+ * @author LUCIE BECHTOLD / CYRIL WALLE 
+ * @version 1.0
+ */
+ 
 public class Method3
 {
     
      /**
     * Method insertionSort
     *
-    * @param table (double[])
-    * @return table (double[])
+    * @param table (int[])
+    * @return table (int[])
     */
-    public double[] insertionSort (double[] table)
+    public static int[] insertionSort (int[] table)
     {
         int length = table.length;
-        double pivot = 0;
+        int pivot = 0;
         int i = 0;
         for(int j = 1; j < length; j++)
         {
