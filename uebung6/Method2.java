@@ -31,7 +31,7 @@ public class Method2
         int letters = 0;
         for (int i = 0; i < sizeTable; i++)
         {
-            if (isUpperCase(string,sizeTable) == true)
+            if (isLetter(string,sizeTable) == true)
             {
                 letters++;
             }
@@ -55,18 +55,5 @@ public class Method2
             }
         }
         return true;
-    }
-        
-     /**
-    * Method check
-    *
-    * @param condition (boolean), message (String)
-    * throws AssertionError if condition false.
-    */
-    public static void check(boolean condition, String message)
-    {
-        if (!condition) {
-            throw new AssertionError(message);
-        }
     }
 }
