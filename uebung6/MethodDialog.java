@@ -71,7 +71,7 @@ public class MethodDialog
         try {
             int sizeTable = askInt("Enter the size of the table you want to create :\t");
             String[] table = createNewTableString(sizeTable);
-            System.out.println(Method2.countLetters(table));
+            System.out.println(Method2.countStringsWithUniCaseLetters(table));
         } catch (Error e) {
             System.out.println("Error: " + e);
         }

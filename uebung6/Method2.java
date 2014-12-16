@@ -13,13 +13,13 @@ public class Method2
     * 
     * @param  string (String[]), sizeTable (int)
     */
-    public static String countLetters (String[] string)
+    public static String countStringsWithUniCaseLetters (String[] strings)
     {
         int letters = 0;
-        int sizeTable = table.length;
+        int sizeTable = strings.length;
         for (int i = 0; i < sizeTable; i++)
         {
-            if (isCharLetter(string[i],sizeTable) == true)
+            if (isOnlyLetter(strings[i]) == true)
             {
                 letters++;
             }
@@ -28,16 +28,16 @@ public class Method2
     }
     
      /**
-    * Method isLetter
+    * Method isOnlyLetter
     * 
     * @param  string (String), sizeTable (int)
     * @return isLetter (boolean)
     */
-    public static boolean isCharLetter (String string)
+    public static boolean isOnlyLetter (String strings)
     {
-        for (int i = 0; i < string.length(); i++)
+        for (int i = 0; i < strings.length(); i++)
         {
-            if (!Character.isLetter(string.charAt(i)))
+            if (!Character.isLetter(strings.charAt(i)))
             {
                 return false;
             }
