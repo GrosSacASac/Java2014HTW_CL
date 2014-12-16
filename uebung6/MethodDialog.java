@@ -56,7 +56,7 @@ public class MethodDialog
         try {
             int sizeTable = askInt("Enter the size of the table you want to create :\t");
             double[] table = createNewTableNumberDouble(sizeTable);
-            System.out.println(Method1.calculateArithmAverAndOthers(table,sizeTable));
+            System.out.println(Method1.calculateArithmAverAndOthers(table));
         } catch (Error e) {
             System.out.println("Error: " + e);
         }
@@ -71,7 +71,7 @@ public class MethodDialog
         try {
             int sizeTable = askInt("Enter the size of the table you want to create :\t");
             String[] table = createNewTableString(sizeTable);
-            System.out.println(Method2.countLetters(table,sizeTable));
+            System.out.println(Method2.countLetters(table));
         } catch (Error e) {
             System.out.println("Error: " + e);
         }
@@ -96,6 +96,11 @@ public class MethodDialog
         }
     }
     
+    /**
+     * Method createNewTableNumberInt
+     * @param sizeTable (int)
+     * @return table (int[])
+     */
     public int[] createNewTableNumberInt (int sizeTable)
     {
         int number;
@@ -107,6 +112,11 @@ public class MethodDialog
         return table;
     }    
     
+    /**
+     * Method createNewTableNumberDouble
+     * @param sizeTable (int)
+     * @return table (double[])
+     */
     public double[] createNewTableNumberDouble (int sizeTable)
     {
         double number;
@@ -118,6 +128,11 @@ public class MethodDialog
         return table;
     }    
     
+    /**
+     * Method createNewTableString
+     * @param sizeTable (int)
+     * @return table (String[])
+     */
     public String[] createNewTableString (int sizeTable)
     {
         String text;

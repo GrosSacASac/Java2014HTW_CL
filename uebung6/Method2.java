@@ -13,9 +13,10 @@ public class Method2
     * 
     * @param  string (String[]), sizeTable (int)
     */
-    public static String countLetters (String[] string, int sizeTable)
+    public static String countLetters (String[] string)
     {
         int letters = 0;
+        int sizeTable = table.length;
         for (int i = 0; i < sizeTable; i++)
         {
             if (isCharLetter(string[i],sizeTable) == true)
@@ -32,7 +33,7 @@ public class Method2
     * @param  string (String), sizeTable (int)
     * @return isLetter (boolean)
     */
-    public static boolean isCharLetter (String string, int sizeTable)
+    public static boolean isCharLetter (String string)
     {
         for (int i = 0; i < string.length(); i++)
         {

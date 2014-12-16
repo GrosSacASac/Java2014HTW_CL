@@ -15,11 +15,11 @@ public class Method1
     * @param sizeTable (int), table (double[])
     * @return results to the different methods (String)
     */
-    public static String calculateArithmAverAndOthers (double[] table, int sizeTable)
+    public static String calculateArithmAverAndOthers (double[] table)
     {
-        double arithmeticAverage = calculateArithmeticAverage(sizeTable,table);
-        double furthestNumber = furthestNumberFrom(sizeTable,table);
-        double closestNumber = closestNumberFrom(sizeTable, table);
+        double arithmeticAverage = calculateArithmeticAverage(table);
+        double furthestNumber = furthestNumberFrom(table);
+        double closestNumber = closestNumberFrom(table);
         return  "Arithmetic average : " + arithmeticAverage + 
                 "\nFurthest number from the arithmetic average : " + furthestNumber +
                 "\nClosest number from the arithmetic average : " + closestNumber;
@@ -30,9 +30,10 @@ public class Method1
     *
     * @param sizeTable (int), table (double[])
     */
-    public static double calculateArithmeticAverage (int sizeTable, double[] table)
+    public static double calculateArithmeticAverage (double[] table)
     {
         double sumTotalTable = 0.0;
+        double sizeTable = table.length;
         for (int i = 0; i < sizeTable; i++)
         {
             sumTotalTable += table[i];
@@ -47,11 +48,12 @@ public class Method1
     * @param table (double[])
     * @return maximum (double)
     */
-    public static double furthestNumberFrom (int sizeTable, double[] table)
+    public static double furthestNumberFrom (double[] table)
     {
         double maximum = 0.0;
-        double furthest = 0.0;
+        double furthest = table[0];
         double index = 0.0;
+        int sizeTable = table.length;
         double average = calculateArithmeticAverage(sizeTable,table);
         for (int i = 0; i < sizeTable; i++)
         {
@@ -71,12 +73,13 @@ public class Method1
     * @param table (double[])
     * @return minimum (double)
     */
-    public static double closestNumberFrom (int sizeTable, double[] table)
+    public static double closestNumberFrom (double[] table)
     {
-        double minimum = 0.0;
-        double closest = 0.0;
+        double closest = table[0];
         double index = 0.0;
         double average = calculateArithmeticAverage(sizeTable,table);
+        double minimum = calculateGap(average,closest);
+        int sizeTable = table.length;
         for (int i = 0; i < sizeTable; i++)
         {
             index = minimum;
@@ -128,6 +131,10 @@ public class Method1
     public static double calculateGap (double average, double number)
     {
         double gap = average - number;
+        if (gap < 0)
+        {
+            gap = -gap;
+        }
         return gap;
     }
 }
