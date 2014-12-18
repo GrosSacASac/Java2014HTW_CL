@@ -1,4 +1,4 @@
-#java and bluej
+# java and bluej
 *.class
 *.java~
 *.ctxt
@@ -62,3 +62,4 @@ $RECYCLE.BIN/
 *.msm
 *.msp
 *.bak
+*.bluej
