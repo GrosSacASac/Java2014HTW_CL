@@ -1,4 +1,8 @@
+#java and bluej
 *.class
+*.java~
+*.ctxt
+*.bluej
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
