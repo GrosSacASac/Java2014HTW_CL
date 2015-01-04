@@ -104,7 +104,7 @@ public class MethodDialog
     public int[] createNewTableNumberInt (int sizeTable)
     {
         int number;
-        int[] table = new int[sizeTable];;
+        int[] table = new int[sizeTable];
         for (int i = 0; i < sizeTable; i++)
         {
             table[i] = askInt("Enter a number (int) :\t");

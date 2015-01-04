@@ -1,8 +1,0 @@
-#BlueJ class context
-comment0.params=strings
-comment0.target=int\ countStringsWithUniCaseLetters(java.lang.String[])
-comment0.text=\r\n\ Method\ countUpperAndLowerCase\r\n\ \r\n\ @param\ \ string\ (String[]),\ sizeTable\ (int)\r\n
-comment1.params=strings
-comment1.target=boolean\ isOnlyLetter(java.lang.String)
-comment1.text=\r\n\ Method\ isOnlyLetter\r\n\ \r\n\ @param\ \ string\ (String),\ sizeTable\ (int)\r\n\ @return\ isLetter\ (boolean)\r\n
-numComments=2
