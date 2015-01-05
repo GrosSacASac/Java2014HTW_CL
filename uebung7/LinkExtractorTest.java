@@ -6,26 +6,24 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * The test class Method3Test.
+ * The test class .
  *
  * @author  (your name)
  * @version (a version number or a date)
  */
-public class Method3Test
+public class LinkExtractorTest
 {
     /**
      * Default constructor for test class Method3Test
      */
-    public Method3Test()
+    public LinkExtractorTest()
     {
     }
 
     @Test
-    public void insertionSortTest()
+    public void aTest()
     {
-        int[] unsorted = {99,3,2,1,45};
-        int[] wanted = {1,2,3,45,99};
-        assertArrayEquals(Method3.insertionSort(unsorted), wanted);
+        
     }
     
     /**
