@@ -8,7 +8,7 @@ import java.util.regex.*;
 public class PatientenWarteschlange
 {
     int size;
-    Patient[] patientWarteSchlange;
+    Patient[] warteSchlange;
     
     /**
      * Constructor
@@ -16,7 +16,7 @@ public class PatientenWarteschlange
     public PatientenWarteschlange (int maxSize)
     {
         this.size = 0;
-        this.patientWarteSchlange = new patientWarteSchlange[maxSize];
+        this.warteSchlange = new warteSchlange[maxSize];
     }
     
     /**
@@ -27,26 +27,16 @@ public class PatientenWarteschlange
     public void neuerPatient (Patient patient)
     {
         check(size < 10, "Warteliste ist voll");
-        this.patientWarteSchlange[this.size] = patient;
+        this.warteSchlange[this.size] = patient;
         this.size++;
     }
     
-    /**
-     * Method neuerPatient
-     *
-     * @param patient (Patient)
-     * @return naechster (Patient)
-     */
-    public Patient derNaechsteBitte ()
+    public void derNaechsteBitte (int patientNumber)
     {
-        Patient naechster = patientWarteSchlange[0];
-        
         for (int i = size ; i > 0 ; i--)
         {
-            patientWarteSchlange[i - 1] = patientWarteSchlange[i];
+            warteSchlange[i - 1] = warteSchlange[i];
         }
-        
-        return naechster;
     }
     
     /**
@@ -58,17 +48,17 @@ public class PatientenWarteschlange
      */
     public String entfernePatient (int patientNummer)
     {
-        int i = this.getPatientVonNummer(patientNummer);
+        int i = this.getPatientFromNumber(patientNumber);
         if (i == -1) {
         	return "Faillure";
         }
         for (int j = i ; j < this.size ; j++)
         {
-            this.patientWarteSchlange[j] = this.patientWarteSchlange[j + 1];
+            this.warteSchlange[j] = this.warteSchlange[j + 1];
         }
         this.size--;
         
-        return "Patient geloescht: " + patientWarteSchlange[i].nummer + "\t" + patientWarteSchlange[i].name;
+        return "Patient geloescht: " + warteSchlange[i].nummer + "\t" + warteSchlange[i].name;
     }
         
     public String toString() {

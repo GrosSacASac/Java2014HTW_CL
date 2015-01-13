@@ -61,7 +61,7 @@ public class DepotDialog
                     case CHANGE_PRIZE_NEGATIVE:
                         break;
                 }
-            } catch (AssertionError e)
+            } catch (Exception e)
             {
                 System.out.println(e);
             }
