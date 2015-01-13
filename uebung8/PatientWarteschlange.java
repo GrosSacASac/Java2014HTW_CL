@@ -16,11 +16,11 @@ public class PatientenWarteschlange
     public PatientenWarteschlange (int maxSize)
     {
         this.size = 0;
-        this.warteSchlange = new patient[maxSize];
+        this.warteSchlange = new warteSchlange[maxSize];
     }
     
     /**
-     * Method newPatient
+     * Method neuerPatient
      *
      * @param patient (Patient)
      */
@@ -33,42 +33,58 @@ public class PatientenWarteschlange
     
     public void derNaechsteBitte (int patientNumber)
     {
-        for ( int i = size ; i < 
+        for (int i = size ; i > 0 ; i--)
+        {
+            warteSchlange[i - 1] = warteSchlange[i];
+        }
     }
     
     /**
-     * Method removePatient
+     * Method entfernePatient
      *
      * deletes a patient when entering its number from the waiting list
      *
      * @param patientNumber (int)
      */
-    public void entfernePatient (int patientNumber)
+    public String entfernePatient (int patientNummer)
     {
-        int i = this.patientFromNumber(patientNumber);
+        int i = this.getPatientFromNumber(patientNumber);
         if (i == -1) {
-        	return;
+        	return "Faillure";
         }
         for (int j = i ; j < this.size ; j++)
         {
-            this.patient[j] = this.patient[j + 1];
+            this.warteSchlange[j] = this.warteSchlange[j + 1];
         }
         this.size--;
+        
+        return "Patient geloescht: " + warteSchlange[i].nummer + "\t" + warteSchlange[i].name;
+    }
+        
+    public String toString() {
+        String res = ("Warteliste \nPnr \tName\n");
+        
+        for (int i = size ; i >= 0 ; i--)
+        {
+            res += Patient.nummer + "\t" + Patient.name + "\n";
+        }
+        
+        return res;
     }
     
     /**
-     * Method patientFromNumber
+     * Method getPatientVonNummer
      * 
 	 * finds the rank of the article in the table with its number
 	 * 
 	 * @param  patientNumber (int)
      * @return i (int) the rank of the article with the asked number
 	 */
-    public patientFromNumber (int patientNumber)
+    public getPatientVonNummer (int patientNummer)
     {
-        for (int i=0; i<this.size ; i++)
+        for (int i = 0 ; i < this.size ; i++)
         {
-            if (patientNumber == this.table[i].getNumber())
+            if (patientNummer == this.table[i].getNummer())
             {
                 return i;
             }
@@ -85,7 +101,7 @@ public class PatientenWarteschlange
     public static void check(boolean condition, String message)
     {
         if (!condition) {
-            throw new RuntimeException(message);
+            throw new Exception(message);
         }
     }
 }

@@ -16,7 +16,7 @@ public class Patient
     public Patient (int nummer, String name)
     {
         check(nummer<10000 && nummer>999, "Das Patientnummer muss 4-stellig sein.");
-        check();
+        check(name.matches "[A-Z]{1}[a-z]+, [A-Z]{1}[a-z]+", "Schlechten Format.");
         
         this.nummer = nummer;
         this.name = name;
@@ -31,7 +31,7 @@ public class Patient
     public static void check(boolean condition, String message)
     {
         if (!condition) {
-            throw new RuntimeException(message);
+            throw new Exception(message);
         }
     }
 }
