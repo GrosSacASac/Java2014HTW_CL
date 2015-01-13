@@ -4,11 +4,12 @@
  */
 
 import java.util.regex.*;
+
  
 public class PatientenWarteschlange
 {
     int size;
-    Patient[] warteSchlange;
+    Patient[] patientWarteSchlange;
     
     /**
      * Constructor
@@ -16,7 +17,7 @@ public class PatientenWarteschlange
     public PatientenWarteschlange (int maxSize)
     {
         this.size = 0;
-        this.warteSchlange = new warteSchlange[maxSize];
+        this.patientWarteSchlange = new Patient[maxSize];
     }
     
     /**
@@ -27,16 +28,39 @@ public class PatientenWarteschlange
     public void neuerPatient (Patient patient)
     {
         check(size < 10, "Warteliste ist voll");
-        this.warteSchlange[this.size] = patient;
+        this.patientWarteSchlange[this.size] = patient;
         this.size++;
     }
     
-    public void derNaechsteBitte (int patientNumber)
+    /**
+     * Method neuerPatient
+     *
+     * @param nummer (int), name (String)
+     * alternative
+     */
+    public void neuerPatient (int nummer, String name)
     {
+        check(size < 10, "Warteliste ist voll");
+        this.patientWarteSchlange[this.size] = new Patient(nummer,name);
+        this.size++;
+    }
+    
+    /**
+     * Method neuerPatient
+     *
+     * @param patient (Patient)
+     * @return naechster (Patient)
+     */
+    public Patient derNaechsteBitte ()
+    {
+        Patient naechster = patientWarteSchlange[0];
+        
         for (int i = size ; i > 0 ; i--)
         {
-            warteSchlange[i - 1] = warteSchlange[i];
+            patientWarteSchlange[i - 1] = patientWarteSchlange[i];
         }
+        
+        return naechster;
     }
     
     /**
@@ -48,17 +72,17 @@ public class PatientenWarteschlange
      */
     public String entfernePatient (int patientNummer)
     {
-        int i = this.getPatientFromNumber(patientNumber);
+        int i = this.getPatientVonNummer(patientNummer);
         if (i == -1) {
         	return "Faillure";
         }
         for (int j = i ; j < this.size ; j++)
         {
-            this.warteSchlange[j] = this.warteSchlange[j + 1];
+            this.patientWarteSchlange[j] = this.patientWarteSchlange[j + 1];
         }
         this.size--;
         
-        return "Patient geloescht: " + warteSchlange[i].nummer + "\t" + warteSchlange[i].name;
+        return "Patient geloescht: " + patientWarteSchlange[i].nummer + "\t" + patientWarteSchlange[i].name;
     }
         
     public String toString() {
@@ -80,11 +104,11 @@ public class PatientenWarteschlange
 	 * @param  patientNumber (int)
      * @return i (int) the rank of the article with the asked number
 	 */
-    public getPatientVonNummer (int patientNummer)
+    public int getPatientVonNummer (int patientNummer)
     {
         for (int i = 0 ; i < this.size ; i++)
         {
-            if (patientNummer == this.table[i].getNummer())
+            if (patientNummer == this.patientWarteSchlange[i].nummer)
             {
                 return i;
             }
@@ -98,10 +122,10 @@ public class PatientenWarteschlange
      * @param condition (boolean), message (String)
      * throws RuntimeError if condition false.
      */
-    public static void check(boolean condition, String message)
+    public static void check(boolean condition, String message) throws RuntimeException
     {
         if (!condition) {
-            throw new Exception(message);
+            throw new RuntimeException(message);
         }
     }
 }

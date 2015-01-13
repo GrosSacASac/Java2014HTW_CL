@@ -13,10 +13,10 @@ public class PatientenWarteschlange
     /**
      * Constructor
      */
-    public PatientenWarteschlange (int maxSize)
+    public PatientenWarteSchlange (int maxSize)
     {
         this.size = 0;
-        this.patientWarteSchlange = new patientWarteSchlange[maxSize];
+        this.patientWarteSchlange = new PatientWarteSchlange[maxSize];
     }
     
     /**
@@ -90,7 +90,7 @@ public class PatientenWarteschlange
 	 * @param  patientNumber (int)
      * @return i (int) the rank of the article with the asked number
 	 */
-    public getPatientVonNummer (int patientNummer)
+    public int getPatientVonNummer (int patientNummer)
     {
         for (int i = 0 ; i < this.size ; i++)
         {

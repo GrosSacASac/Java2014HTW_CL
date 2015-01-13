@@ -11,10 +11,10 @@ public class PWDialog
     
     public void start() 
     {
-        static final byte EXIT = 0;
-        static final byte NEUER_PATIENT = 1;
-        static final byte DER_NAECHSTE_BITTE = 2;
-        static final byte ENTFERNEN_PATIENT = 3;
+        final byte EXIT = 0;
+        final byte NEUER_PATIENT = 1;
+        final byte DER_NAECHSTE_BITTE = 2;
+        final byte ENTFERNEN_PATIENT = 3;
         
         byte antwort;
         
