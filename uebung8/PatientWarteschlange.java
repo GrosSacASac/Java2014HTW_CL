@@ -8,7 +8,7 @@ import java.util.regex.*;
 public class PatientenWarteschlange
 {
     int size;
-    int patient[] warteSchlange;
+    Patient[] warteSchlange;
     
     /**
      * Constructor
@@ -24,7 +24,7 @@ public class PatientenWarteschlange
      *
      * @param patient (Patient)
      */
-    public void neuePatient (Patient patient)
+    public void neuerPatient (Patient patient)
     {
         check(size < 10, "Warteliste ist voll");
         this.warteSchlange[this.size] = patient;
@@ -33,16 +33,16 @@ public class PatientenWarteschlange
     
     public void derNaechsteBitte (int patientNumber)
     {
-        
+        for ( int i = size ; i < 
     }
     
-     /**
-    * Method removePatient
-    *
-    * deletes a patient when entering its number from the waiting list
-    *
-    * @param patientNumber (int)
-    */
+    /**
+     * Method removePatient
+     *
+     * deletes a patient when entering its number from the waiting list
+     *
+     * @param patientNumber (int)
+     */
     public void entfernePatient (int patientNumber)
     {
         int i = this.patientFromNumber(patientNumber);
@@ -56,14 +56,14 @@ public class PatientenWarteschlange
         this.size--;
     }
     
-     /**
-    * Method patientFromNumber
-    * 
-	* finds the rank of the article in the table with its number
-	* 
-	* @param  patientNumber (int)
-    * @return i (int) the rank of the article with the asked number
-	*/
+    /**
+     * Method patientFromNumber
+     * 
+	 * finds the rank of the article in the table with its number
+	 * 
+	 * @param  patientNumber (int)
+     * @return i (int) the rank of the article with the asked number
+	 */
     public patientFromNumber (int patientNumber)
     {
         for (int i=0; i<this.size ; i++)
