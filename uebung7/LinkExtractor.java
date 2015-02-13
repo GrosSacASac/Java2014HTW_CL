@@ -13,10 +13,10 @@ public class LinkExtractor
     public LinkExtractor (){}
    
     public static void main(String[] args) {
-        Scanner s = new Scanner(System.in);
-        
+        //Scanner s = new Scanner(System.in);
+        //s.nextLine()
 
-        final Path filePath = Paths.get(s.nextLine());
+        final Path filePath = Paths.get(args[0]);
         final StringBuilder sb = new StringBuilder();
         
         String htmlText = "";

@@ -51,8 +51,10 @@ public class HtmlParser
         resetTag();
         this.currentElement = new HtmlElement(
                         "#document", this.currentAttributes, this.currentAttributeValues);
+        this.ancestorNodes.add(this.currentElement);
         for(this.i = 0; this.i < length; this.i++ ) {
             handleLetter(this.htmlText.charAt(this.i));
+            System.out.println(this.ancestorNodes.size());
         }
         //
         return currentElement;
@@ -129,6 +131,12 @@ public class HtmlParser
     }
     
     private void addLetter (char letter) {
+        switch (this.state) {
+            case IN_TAG:
+                this.state = IN_TAG_ATTRIBUTE;
+                break;
+            default:
+        }
         this.currentWord += Character.toString(letter);
     }
     
@@ -178,7 +186,9 @@ public class HtmlParser
                 invalidHtml(GREATER_THAN_SIGN_ILLEGAL_PLACE);
                 break;
             case IN_CLOSING_TAG:
+                this.currentTag = this.currentWord;
                 closeElement();
+                resetWord();
             default:
                 addLetter('>');
         }
@@ -187,6 +197,9 @@ public class HtmlParser
         switch (this.state) {
             case IN_TAG_NAME:
                 warnBadHtml(SPLIT_TOKEN_IN_TAG);
+                this.state = IN_TAG_ATTRIBUTE_VALUE_WITHOUT_QUOTATION_MARK;
+                this.currentTag = this.currentWord;
+                resetWord();
                 break;
             case IN_TAG:
                 warnBadHtml(EQUAL_SIGN_WITHOUT_ATTRIBUTE);
@@ -270,7 +283,8 @@ public class HtmlParser
             case IN_TAG_NAME:
                 //closing element
                 this.state = IN_CLOSING_TAG;
-                enterElement();
+                this.currentTag = this.currentWord;
+                //NO need to enter
                 break;                
             case IN_TAG:
                 //autoclosing element, perhaps add a warning this is not standard anymore
@@ -287,6 +301,8 @@ public class HtmlParser
         switch (this.state) {
             case IN_TAG_NAME:
                 this.state = IN_TAG;
+                this.currentTag = this.currentWord;
+                resetWord();
                 break;
             case IN_TAG:
                 //pass

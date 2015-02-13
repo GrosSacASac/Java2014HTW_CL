@@ -24,15 +24,15 @@ public class HtmlElement {
         do {
             attribute = attributes[i];
             attributeValue = attributeValues[i];
-            if (!attribute.isEmpty()) {
-                if (!attributeValue.isEmpty()) {
+            if (!(attribute == null) && (!attribute.isEmpty())) {
+                if (!(attributeValue == null) && (!attributeValue.isEmpty())) {
                     addAttributeandValue(attribute, attributeValue);
                 } else {
                     addAttributeandValue(attribute);
                 }
             }
             i++;
-        } while(!attribute.isEmpty() && i < length);
+        } while(!(attribute == null) && (!attribute.isEmpty()) && i < length);
         
             
     }
